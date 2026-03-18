@@ -96,3 +96,15 @@ def extract_portfolio(state):
         "stock_data": state.get("stock_data", {}),
         "chat_history": state.get("chat_history", [])
     }
+
+def retrieve(state, retriever):
+    question = state["question"]
+
+    docs = retriever.invoke(question)
+
+    return {
+        "documents": docs,
+        "question": question,
+        "user_profile": state.get("user_profile", {}),
+        "chat_history": state.get("chat_history", [])
+    }
