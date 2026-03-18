@@ -1,0 +1,6 @@
+import os
+
+ASTRA_DB_APPLICATION_TOKEN = os.getenv("ASTRA_DB_APPLICATION_TOKEN")
+ASTRA_DB_ID = os.getenv("ASTRA_DB_ID")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
