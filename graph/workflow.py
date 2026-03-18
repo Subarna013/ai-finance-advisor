@@ -9,7 +9,7 @@ def build_workflow(router, retriever, wiki, llm, GraphState, nodes):
     workflow.add_node("wiki", lambda s: nodes.wiki_search(s, wiki))
     workflow.add_node("generate", lambda s: nodes.generate(s, llm))
     workflow.add_node("stock", lambda s: nodes.stock_analysis(s))
-    workflow.add_node("portfolio", lambda s: nodes.extract_portfolio(s))
+    workflow.add_node("portfolio_node", lambda s: nodes.extract_portfolio(s))
 
     # Router logic
     def route(state):
