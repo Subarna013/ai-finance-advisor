@@ -1,4 +1,4 @@
-from langchain_community.vectorstores import FAISS
+from langchain_community.vectorstores import Chroma
 
 def init_db(embedding, docs):
-    return FAISS.from_documents(docs, embedding)
+    return Chroma.from_documents(docs, embedding)
