@@ -10,7 +10,6 @@ def build_workflow(router, retriever, wiki, llm, GraphState, nodes):
     workflow.add_node("generate", lambda s: nodes.generate(s, llm))
     workflow.add_node("stock", lambda s: nodes.stock_analysis(s))
     workflow.add_node("portfolio_node", lambda s: nodes.extract_portfolio(s))
-
     # Router logic
     def route(state):
         result = router.invoke({"question": state["question"]})
@@ -29,9 +28,8 @@ def build_workflow(router, retriever, wiki, llm, GraphState, nodes):
     # Flow to generation
     workflow.add_edge("retrieve", "stock")
     workflow.add_edge("wiki", "stock")
-    workflow.add_edge("stock", "portfolio")
-    workflow.add_edge("portfolio", "generate")
-    # End
+    workflow.add_edge("stock", "portfolio_node")
+    workflow.add_edge("portfolio_node", "generate")
     workflow.add_edge("generate", END)
 
     return workflow.compile()
