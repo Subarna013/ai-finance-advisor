@@ -10,6 +10,12 @@ from graph.workflow import build_workflow
 from graph.state import GraphState
 from graph import nodes
 
+import streamlit as st
+
+st.title("🚀 App Loaded Successfully")
+st.write("If you see this, UI is working")
+
+
 from langchain_groq import ChatGroq
 
 
