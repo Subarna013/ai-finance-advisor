@@ -19,7 +19,7 @@ def setup_app():
     docs = load_and_split()
     embeddings = get_embeddings()
 
-    store = init_db(ASTRA_DB_APPLICATION_TOKEN, ASTRA_DB_ID, embeddings, docs)
+    store = init_db(embeddings, docs)
     retriever = store.as_retriever()
 
     wiki = get_wiki_tool()
